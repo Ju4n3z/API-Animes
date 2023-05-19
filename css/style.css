@@ -1,7 +1,11 @@
 body{
     background-image: url(../images/fondo.jpg);
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
+}
+
+.top{
+    padding: 10px;
 }
