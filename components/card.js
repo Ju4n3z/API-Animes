@@ -1,13 +1,8 @@
 class CardTop extends HTMLElement {
-
-  titulo;
-  url;
     
     constructor(titulo, url) {
       super();
       //this.attachShadow({ mode: "open" });
-      this.titulo = titulo;
-      this.url = url;
       this.render(titulo, url);
     }
   

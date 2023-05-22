@@ -22,14 +22,13 @@ const agregarCartas = async (id) => {
 			const response = await fetch(url, options);
 			const result = await response.json();
 			let count = Object.keys(result).length
-			console.log(count);
 			if (count == 1) {
 				let carta = new CardResultados404("404", "../images/noencontrado.webp", "No se encontró el anime");
 				div1.appendChild(carta);
 				carta.setAttribute("class", "card");
 				carta.setAttribute("style", "width: 18rem;");
 			} else {
-				let carta = new CardResultados(result.title_ov, result.picture_url, result.synopsis.slice(0, 50) + "...", id[i]);
+				let carta = new CardResultados(result, id[i]);
 				div1.appendChild(carta);
 				carta.setAttribute("class", "card");
 				carta.setAttribute("style", "width: 18rem;");
@@ -57,14 +56,13 @@ try {
 	for (let i = 0; i < 2; i++) {
 		id.push(result[i].myanimelist_id);
 	}
-	console.log(id);
 	agregarCartas(id);
 } catch (error) {
 	console.error(error);
 }
 }
 
-/**
+/*
 const agregarTop = async (topTitulo, topUrl) => {
 	let top = document.querySelector('#topM');
 	top.innerHTML = "";
