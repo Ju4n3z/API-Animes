@@ -1,6 +1,7 @@
 //import { CardTop } from "../components/card.js";
 import { CardResultados } from "../components/resultados.js";
 import { CardResultados404 } from "../components/resultados404.js";
+import { Modal } from "../components/modal.js";
 
 const options = {
 	method: 'GET',
@@ -14,6 +15,7 @@ const agregarCartas = async (id) => {
 	let resultados = document.querySelector('#resultados');
 	resultados.removeAttribute("style");
 	let div1 = document.querySelector('#div1');
+	let body = document.querySelector('#body');
 	for (let i = 0; i < id.length; i++) {
 		const url = `https://myanimelist.p.rapidapi.com/anime/${id[i]}`;
 		try {
@@ -31,6 +33,13 @@ const agregarCartas = async (id) => {
 				div1.appendChild(carta);
 				carta.setAttribute("class", "card");
 				carta.setAttribute("style", "width: 18rem;");
+				let modal = new Modal(result, id);
+				body.appendChild(modal);
+				modal.setAttribute("class", "modal fade");
+				modal.setAttribute("id", id[i]);
+				modal.setAttribute("tabindex", "-1");
+				modal.setAttribute("aria-labelledby", "exampleModalLabel");
+				modal.setAttribute("aria-hidden", "true");
 			}
 		} catch (error) {
 			console.error(error);
