@@ -64,6 +64,8 @@ try {
 
 /*
 const agregarTop = async (topTitulo, topUrl) => {
+    let topA = document.querySelector('#topA');
+	topA.removeAttribute("style");
 	let top = document.querySelector('#topM');
 	top.innerHTML = "";
 	for (let i = 0; i < 3; i++) {
@@ -71,10 +73,10 @@ const agregarTop = async (topTitulo, topUrl) => {
 		top.appendChild(card);
 		card.setAttribute("class", "col-3 d-block");
 	}
- */
+}
 
-/*(const top3 = (async () => {
-	const url = 'https://myanimelist.p.rapidapi.com/anime/top/airing';
+const top3 = (async () => {
+	const url = 'https://myanimelist.p.rapidapi.com/manga/top/all';
 
 try {
 	const response = await fetch(url, options);
