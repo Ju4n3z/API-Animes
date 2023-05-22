@@ -79,5 +79,7 @@ let formulario = document.querySelector('#formulario');
 formulario.addEventListener("submit", (e)=>{
 	e.preventDefault();
 	let data = Object.fromEntries(new FormData(e.target));
-	funcionPrincipal(data.buscar)
+	let dataC = data.buscar.replaceAll(" ", "%20");
+	console.log(dataC);
+	funcionPrincipal(dataC)
 })
