@@ -1,7 +1,7 @@
 //import { CardTop } from "../components/card.js";
 import { CardResultados } from "../components/resultados.js";
 import { CardResultados404 } from "../components/resultados404.js";
-import { Modal } from "../components/modal.js";
+import { Modal } from "../components/modalM.js";
 
 const options = {
 	method: 'GET',
@@ -15,24 +15,31 @@ const agregarCartas = async (id) => {
 	let resultados = document.querySelector('#resultados');
 	resultados.removeAttribute("style");
 	let div1 = document.querySelector('#div1');
+    div1.innerHTML = "";
 	let body = document.querySelector('#body');
+    let genero = "";
 	for (let i = 0; i < id.length; i++) {
-		const url = `https://myanimelist.p.rapidapi.com/anime/${id[i]}`;
+        const url = `https://myanimelist.p.rapidapi.com/manga/${id[i]}`;
 		try {
 			const response = await fetch(url, options);
 			const result = await response.json();
 			let count = Object.keys(result).length
 			if (count == 1) {
-				let carta = new CardResultados404("404", "../images/noencontrado.webp", "No se encontró el anime");
+				let carta = new CardResultados404("404", "../images/404.jpg", "No se encontró el anime");
 				div1.appendChild(carta);
 				carta.setAttribute("class", "card");
 				carta.setAttribute("style", "width: 18rem;");
 			} else {
+                if (result.information.genres != undefined) {
+                    genero = result.information.genres[0].name;
+                } else {
+                    genero = result.information.genre[0].name;;
+                }
 				let carta = new CardResultados(result, id[i]);
 				div1.appendChild(carta);
 				carta.setAttribute("class", "card");
 				carta.setAttribute("style", "width: 18rem;");
-				let modal = new Modal(result, id);
+				let modal = new Modal(result, genero);
 				body.appendChild(modal);
 				modal.setAttribute("class", "modal fade");
 				modal.setAttribute("id", id[i]);
@@ -47,7 +54,7 @@ const agregarCartas = async (id) => {
 }
 
 const funcionPrincipal = async (buscar) => {
-	const url = `https://myanimelist.p.rapidapi.com/anime/search/${buscar}/4`;
+	const url = `https://myanimelist.p.rapidapi.com/manga/search/${buscar}/4`;
 
 try {
 	const response = await fetch(url, options);

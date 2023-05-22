@@ -1,18 +1,18 @@
 class Modal extends HTMLElement {
       
-      constructor(result, id) {
+      constructor(result, tipo, genero) {
         super();
         //this.attachShadow({ mode: "open" });
-        this.render(result, id);
+        this.render(result, tipo, genero);
       }
     
     
-      render(result, id){
+      render(result, tipo, genero){
         this.innerHTML =`
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h1 class="modal-title fs-5" id=${id}>${result.title_ov}</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">${result.title_ov}</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
@@ -34,13 +34,12 @@ class Modal extends HTMLElement {
                 </div><br>
                 <div class="row justify-content-evenly">
                     <div class="col-5 d-block">
-                        <h5>Generos:</h5>
-                        <p class="align-middle">${result.information.genres[0].name}</p>
-                        <p class="align-middle">${result.information.genres[1].name}</p>
+                        <h5>Genero:</h5>
+                        <p class="align-middle">${genero}</p>
                     </div>
                     <div class="col-5 d-block">
                         <h5>Tipo:</h5>
-                        <p class="align-middle">${result.information.demographic[0].name}</p>
+                        <p class="align-middle">${tipo}</p>
                     </div>
                 </div><br>
                 <div>
