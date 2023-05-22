@@ -1,5 +1,6 @@
 //import { CardTop } from "../components/card.js";
 import { CardResultados } from "../components/resultados.js";
+import { CardResultados404 } from "../components/resultados404.js";
 
 const options = {
 	method: 'GET',
@@ -18,10 +19,19 @@ const agregarCartas = async (id) => {
 		try {
 			const response = await fetch(url, options);
 			const result = await response.json();
-			let carta = new CardResultados(result.title_ov, result.picture_url, result.synopsis, id[i]);
-			div1.appendChild(carta);
-			carta.setAttribute("class", "card");
-			carta.setAttribute("style", "width: 18rem;");
+			let count = Object.keys(result).length
+			console.log(count);
+			if (count == 1) {
+				let carta = new CardResultados404("404", "../images/noencontrado.webp", "No se encontró el anime");
+				div1.appendChild(carta);
+				carta.setAttribute("class", "card");
+				carta.setAttribute("style", "width: 18rem;");
+			} else {
+				let carta = new CardResultados(result.title_ov, result.picture_url, result.synopsis.slice(0, 50) + "...", id[i]);
+				div1.appendChild(carta);
+				carta.setAttribute("class", "card");
+				carta.setAttribute("style", "width: 18rem;");
+			}
 		} catch (error) {
 			console.error(error);
 		}
@@ -29,7 +39,7 @@ const agregarCartas = async (id) => {
 }
 
 const funcionPrincipal = async (buscar) => {
-	const url = `https://myanimelist.p.rapidapi.com/anime/search/${buscar}/8`;
+	const url = `https://myanimelist.p.rapidapi.com/anime/search/${buscar}/4`;
 
 try {
 	const response = await fetch(url, options);
@@ -80,6 +90,5 @@ formulario.addEventListener("submit", (e)=>{
 	e.preventDefault();
 	let data = Object.fromEntries(new FormData(e.target));
 	let dataC = data.buscar.replaceAll(" ", "%20");
-	console.log(dataC);
 	funcionPrincipal(dataC)
 })
