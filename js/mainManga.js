@@ -25,7 +25,7 @@ const agregarCartas = async (id) => {
 			const result = await response.json();
 			let count = Object.keys(result).length
 			if (count == 1) {
-				let carta = new CardResultados404("404", "../images/404.jpg", "No se encontró el anime");
+				let carta = new CardResultados404("404", "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/792b3b5a-ebda-4d24-b3f5-86862fd5b710/de4e8bl-38ae3669-fb52-48ce-a970-d0f95c13eb04.jpg/v1/fill/w_715,h_1010,q_75,strp/404_by_neetoku_de4e8bl-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAxMCIsInBhdGgiOiJcL2ZcLzc5MmIzYjVhLWViZGEtNGQyNC1iM2Y1LTg2ODYyZmQ1YjcxMFwvZGU0ZThibC0zOGFlMzY2OS1mYjUyLTQ4Y2UtYTk3MC1kMGY5NWMxM2ViMDQuanBnIiwid2lkdGgiOiI8PTcxNSJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.-ID5eAzw2hLyaT9jxh1JNCdMp0p3gcitVSa_4whKGC0", "No se encontró el anime");
 				div1.appendChild(carta);
 				carta.setAttribute("class", "card");
 				carta.setAttribute("style", "width: 18rem;");

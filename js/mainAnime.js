@@ -26,7 +26,7 @@ const agregarCartas = async (id) => {
 			const result = await response.json();
 			let count = Object.keys(result).length
 			if (count == 1) {
-				let carta = new CardResultados404("404", "../images/noencontrado.webp", "No se encontró el anime");
+				let carta = new CardResultados404("404", "https://steamuserimages-a.akamaihd.net/ugc/835831635481552927/2BF157B02B0B084896AB1665FF378CDF426BCDD3/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false", "No se encontró el anime");
 				div1.appendChild(carta);
 				carta.setAttribute("class", "card");
 				carta.setAttribute("style", "width: 18rem;");
