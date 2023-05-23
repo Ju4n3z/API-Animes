@@ -1,4 +1,4 @@
-//import { CardTop } from "../components/card.js";
+import { CardTop } from "../components/card.js";
 import { CardResultados } from "../components/resultados.js";
 import { CardResultados404 } from "../components/resultados404.js";
 import { Modal } from "../components/modalA.js";
@@ -66,7 +66,7 @@ try {
 	const response = await fetch(url, options);
 	const result = await response.json();
 	let id = [];
-	for (let i = 0; i < 2; i++) {
+	for (let i = 0; i < 4; i++) {
 		id.push(result[i].myanimelist_id);
 	}
 	agregarCartas(id);
@@ -75,7 +75,7 @@ try {
 }
 }
 
-/*
+
 const agregarTop = async (topTitulo, topUrl) => {
 	let top = document.querySelector('#topM');
 	top.innerHTML = "";
@@ -84,9 +84,9 @@ const agregarTop = async (topTitulo, topUrl) => {
 		top.appendChild(card);
 		card.setAttribute("class", "col-3 d-block");
 	}
-}*/
+}
 
-/*(const top3 = (async () => {
+const top3 = (async () => {
 	let topA = document.querySelector('#topA');
 	topA.removeAttribute("style");
 	const url = 'https://myanimelist.p.rapidapi.com/anime/top/airing';
@@ -104,7 +104,7 @@ try {
 } catch (error) {
 	console.error(error);
 }
-})();*/
+})();
 
 let formulario = document.querySelector('#formulario');
 

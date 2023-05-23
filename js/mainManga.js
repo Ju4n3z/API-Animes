@@ -1,4 +1,4 @@
-//import { CardTop } from "../components/card.js";
+import { CardTop } from "../components/card.js";
 import { CardResultados } from "../components/resultados.js";
 import { CardResultados404 } from "../components/resultados404.js";
 import { Modal } from "../components/modalM.js";
@@ -60,7 +60,7 @@ try {
 	const response = await fetch(url, options);
 	const result = await response.json();
 	let id = [];
-	for (let i = 0; i < 2; i++) {
+	for (let i = 0; i < 4; i++) {
 		id.push(result[i].myanimelist_id);
 	}
 	agregarCartas(id);
@@ -69,7 +69,7 @@ try {
 }
 }
 
-/*
+
 const agregarTop = async (topTitulo, topUrl) => {
     let topA = document.querySelector('#topA');
 	topA.removeAttribute("style");
@@ -98,7 +98,7 @@ try {
 } catch (error) {
 	console.error(error);
 }
-})();*/
+})();
 
 let formulario = document.querySelector('#formulario');
 
